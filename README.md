@@ -12,9 +12,9 @@ Przykładowy projekt demonstracyjny mający na celu przedstawienie prostego serw
 - Usuwanie konta użytkownika
 
 ## Struktura projektu
-`server.py` - serwer API z endpointami i backendem
-`client.py` - klient konsolowy do testowania API
-`users.json` - plik do przechowywania danych o użytkownikach
+- `server.py` - serwer API z endpointami i backendem
+- `client.py` - klient konsolowy do testowania API
+- `users.json` - plik do przechowywania danych o użytkownikach
 
 ## Instalacja
 > [!NOTE]
@@ -27,7 +27,7 @@ Przykładowy projekt demonstracyjny mający na celu przedstawienie prostego serw
 1. Sklonuj lub pobierz repozytorium
 2. Otwórz terminal/wiersz poleceń i wybierz mejsce docelowe projektu
 ```
-cd C://{lokalizacja projektu}
+cd C:\{lokalizacja projektu}
 ```
 3. Stwórz wirtualne środowisko
 ```
@@ -54,13 +54,8 @@ py server.py
 ```
 py client.py
 ```
-Po uruchomieniu klienta pojawi się menu z opcjami:
+Po uruchomieniu klienta pojawi się menu z opcjami wymienionymi w funkcjach aplikacji
 
-Wyświetlenie listy użytkowników
-Rejestracja nowego użytkownika
-Pobranie danych pojedynczego użytkownika
-Zmiana hasła
-Usunięcie konta
 ## Endpointy API 
 |Metoda|Endpoint|Opis|
 |---|---|---|
