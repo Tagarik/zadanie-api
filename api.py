@@ -51,7 +51,12 @@ def register():
     users.append(new_user)
     save_users(users)
     user_data = {k: v for k, v in new_user.items() if k != 'password'}
-    return flask.jsonify(user_data), 201
+    resp_message = {
+        "status": "success",
+        "message": "Uzytkownik zarejestrowany pomyslnie",
+        'user': user_data
+    }
+    return flask.jsonify(resp_message), 201
 
 
 
@@ -67,7 +72,11 @@ def get_users():
         user_no_pass = {k: v for k, v in user.items() if k != 'password'}
         users_no_pass.append(user_no_pass)
     
-    return flask.jsonify(users_no_pass), 200
+    resp_message = {
+        "status": "success",
+        "users": users_no_pass
+    }
+    return flask.jsonify(resp_message), 200
 
 # Pobieranie danych uzytkownika po ID
 @app.route('/users/<user_id>', methods=['GET'])
@@ -80,7 +89,9 @@ def get_user(user_id):
         flask.abort(404, description="Nie znaleziono użytkownika")
         
     user_data = {k: v for k, v in user.items() if k != 'password'}
-    return flask.jsonify(user_data), 200
+    resp_message = {"status": "success",
+                    'user': user_data}
+    return flask.jsonify(resp_message), 200
 
 # Aktualizacja hasla uzytkownika
 @app.route('/users/<user_id>', methods=['PUT'])
@@ -113,7 +124,12 @@ def update_user(user_id):
     
     save_users(users)
     user_data = {k: v for k, v in users[user_index].items() if k != 'password'}
-    return flask.jsonify(user_data), 200
+    resp_message = {
+        "status": "success",
+        "message": "Haslo zmienione pomyslnie",
+        'user': user_data
+    }
+    return flask.jsonify(resp_message), 200
 
 # Usuwanie uzytkownika
 @app.route('/users/<user_id>', methods=['DELETE'])
@@ -141,7 +157,11 @@ def delete_user(user_id):
     users = [u for u in users if u['id'] != user_id]
     save_users(users)
     
-    return "", 204
+    resp_message = {
+        "status": "success",
+        "message": "Uzytkownik usuniety pomyslnie"
+    }
+    return flask.jsonify(resp_message), 200
 
 
 if __name__ == '__main__':
