@@ -1,33 +1,44 @@
 import requests as re, pprint
 
 def load_users():
-    resp = re.get('http://localhost:8080/users')
-    resp.raise_for_status()
-    pprint.pprint(resp.json())
+    try:
+        resp = re.get('http://localhost:8080/users')
+        pprint.pprint(resp.json())
+    except Exception as e:
+        pprint.pprint(e)
     
 def register(email, password):
-    data = {"email": email, "password": password}
-    resp = re.post('http://localhost:8080/register', json=data)
-    resp.raise_for_status()
-    pprint.pprint(resp.json())
+    try:
+        data = {"email": email, "password": password}
+        resp = re.post('http://localhost:8080/register', json=data)
+        pprint.pprint(resp.json())
+    except Exception as e:
+        pprint.pprint(e)
     
 def load_user(user_id):
-    resp = re.get(f'http://localhost:8080/users/{user_id}')
-    resp.raise_for_status()
-    pprint.pprint(resp.json())
+    try:
+        resp = re.get(f'http://localhost:8080/users/{user_id}')
+        pprint.pprint(resp.json())
+    except Exception as e:
+        pprint.pprint(e)
     
 def update_password(user_id, old_password, new_password):
-    data = {"old_password": old_password,
-            "new_password": new_password}
-    resp = re.put(f'http://localhost:8080/users/{user_id}', json=data)
-    resp.raise_for_status()
-    pprint.pprint(resp.json())
+    try:
+        data = {"old_password": old_password,
+                "new_password": new_password}
+        resp = re.put(f'http://localhost:8080/users/{user_id}', json=data)
+        pprint.pprint(resp.json())
+    except Exception as e:
+        pprint.pprint(e)
     
 def delete_user(user_id, password):
-    data = {"password": password}
-    resp = re.delete(f'http://localhost:8080/users/{user_id}', json=data)
-    resp.raise_for_status()
-    pprint.pprint(resp.json())
+    try:
+        data = {"password": password}
+        resp = re.delete(f'http://localhost:8080/users/{user_id}', json=data)
+        pprint.pprint(resp.json())
+    except Exception as e:
+        pprint.pprint(e)
+        
 
 def menu():
     print("1. Uzytkownicy")
